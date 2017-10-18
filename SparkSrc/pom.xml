@@ -1,0 +1,70 @@
+<project>
+ <properties>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+  <groupId>com.dnanexus</groupId>
+  <artifactId>sparkTest</artifactId>
+  <modelVersion>4.0.0</modelVersion>
+  <name>Spark Test</name>
+  <packaging>jar</packaging>
+  <version>0.1</version>
+  <dependencies>
+    <dependency> <!-- Spark dependency -->
+      <groupId>org.apache.spark</groupId>
+      <artifactId>spark-core_2.11</artifactId>
+      <version>2.1.1</version>
+    </dependency>
+    <dependency> <!-- Spark sql dependency -->
+      <groupId>org.apache.spark</groupId>
+      <artifactId>spark-sql_2.11</artifactId>
+      <version>2.1.1</version>
+    </dependency>
+<!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-aws -->
+    <dependency>
+      <groupId>org.apache.hadoop</groupId>
+      <artifactId>hadoop-aws</artifactId>
+      <version>2.7.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.spark-project.hive</groupId>
+      <artifactId>hive-jdbc</artifactId>
+      <version>1.2.1.spark2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.spark-project.hive</groupId>
+      <artifactId>hive-exec</artifactId>
+      <version>1.2.1.spark2</version>
+    </dependency>
+
+
+  </dependencies>
+  <build>
+      <plugins>
+          <plugin>
+              <groupId>org.codehaus.mojo</groupId>
+              <artifactId>exec-maven-plugin</artifactId>
+              <version>1.2.1</version>
+              <configuration>
+                  <mainClass>com.dnanexus.spark.ThriftTest</mainClass>
+                  <arguments>
+                      <argument>argument1</argument>
+                  </arguments>
+              </configuration>
+          </plugin>
+          <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.dnanexus.spark.SparkTestAppEMR</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+
+      </plugins>
+    </build>
+</project>
